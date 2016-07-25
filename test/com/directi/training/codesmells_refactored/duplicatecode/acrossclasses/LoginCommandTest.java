@@ -1,7 +1,5 @@
 package com.directi.training.codesmells_refactored.duplicatecode.acrossclasses;
 
-import com.directi.training.codesmells.duplicatecode.acrossclasses.LoginCommand;
-
 import org.junit.Test;
 
 import java.io.OutputStream;
@@ -17,18 +15,16 @@ public class LoginCommandTest
     {
         String userName = "Smith";
         String passwd = "qwedsa";
-        com.directi.training.codesmells.duplicatecode.acrossclasses.LoginCommand loginCommand = new com.directi.training.codesmells.duplicatecode.acrossclasses.LoginCommand(userName, passwd);
+        LoginCommand loginCommand = new LoginCommand(userName, passwd);
         OutputStream outputStream = mock(OutputStream.class);
         loginCommand.write(outputStream);
-        verify(outputStream).write(
-            com.directi.training.codesmells.duplicatecode.acrossclasses.LoginCommand.header);
+        verify(outputStream).write(Command.header);
         verify(outputStream).write(19);
-        verify(outputStream).write(
-            com.directi.training.codesmells.duplicatecode.acrossclasses.LoginCommand.commandChar);
+        verify(outputStream).write(Command.commandChar);
         verify(outputStream).write(userName.getBytes());
         verify(outputStream, atLeastOnce()).write(0x00);
         verify(outputStream).write(passwd.getBytes());
         verify(outputStream, atLeastOnce()).write(0x00);
-        verify(outputStream).write(LoginCommand.footer);
+        verify(outputStream).write(Command.footer);
     }
 }
