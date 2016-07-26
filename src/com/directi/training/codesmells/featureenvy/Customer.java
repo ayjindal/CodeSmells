@@ -1,28 +1,23 @@
 package com.directi.training.codesmells.featureenvy;
 
-public class Customer {
+public class Customer
+{
+    private String _name;
+    private Address _currentAddress;
 
-    private String name;
-    private Address currentAddress;
-
-    public Customer(String name, Address address) {
-        this.name = name;
-        this.currentAddress = address;
+    public Customer(String name, Address address)
+    {
+        _name = name;
+        _currentAddress = address;
     }
 
-
-    public void printAddress() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(currentAddress.getAddressLine1());
-        sb.append("\n");
-        sb.append(currentAddress.getAddressLine2());
-        sb.append("\n");
-        sb.append(currentAddress.getCity() + ", " + currentAddress.getState());
-        sb.append("\n");
-        sb.append(currentAddress.getPostalCode());
-        System.out.println(sb.toString());
+    public void printAddress()
+    {
+        System.out.println(
+            _currentAddress.getAddressLine1() + "\n" + _currentAddress.getAddressLine2() + "\n" +
+            _currentAddress.getCity() + ", " + _currentAddress.getState() + "\n" +
+            _currentAddress.getPostalCode());
     }
-
 
     //other methods related to customer class.....
 
